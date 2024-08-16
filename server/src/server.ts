@@ -107,6 +107,7 @@
 
 import express, { Request, Response, NextFunction } from 'express';
 import http from 'http';
+import socketio from 'socket.io';
 import { Server as SocketServer } from 'socket.io';
 import type { Socket } from 'socket.io';
 import mongoose from 'mongoose';
@@ -126,11 +127,15 @@ const openai = new OpenAI({
 
 const app = express();
 const server = http.createServer(app);
-const io = new SocketServer(server, {
+const io = new socketio.Server(server, {
   cors: {
     origin: 'http://localhost:3000',
     methods: ['GET', 'POST'],
   },
+});
+
+io.on('connection', (socket: socketio.Socket) => {
+  // ... rest of your socket code
 });
 
 app.use(cors());
