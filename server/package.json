@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "start": "node dist/server.js",
-  "dev": "ts-node src/server.ts",
-  "build": "tsc"
+    "start": "node dist/server.js",
+    "dev": "ts-node src/server.ts",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
@@ -27,6 +27,7 @@
     "@types/mongoose": "^5.11.97",
     "@types/morgan": "^1.9.9",
     "@types/node": "^22.2.0",
+    "@types/socket.io": "^3.0.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.4"
   }

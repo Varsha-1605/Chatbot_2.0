@@ -6,11 +6,14 @@
 // import helmet from 'helmet';
 // import morgan from 'morgan';
 // import OpenAI from 'openai';
+// import dotenv from 'dotenv';
 // import chatRoutes from './routes/chatRoutes';
 // import errorHandler from './utils/errorHandler';
 
+// dotenv.config();
+
 // const openai = new OpenAI({
-//   apiKey: 'your-api-key-here', // Replace with your OpenAI API key
+//   apiKey: process.env.OPENAI_API_KEY,
 // });
 
 // const app = express();
@@ -27,10 +30,10 @@
 // app.use(morgan('combined'));
 // app.use(express.json());
 
-// const MONGODB_URI = 'your-mongodb-uri-here'; // Replace with your MongoDB URI
+// const MONGODB_URI = process.env.MONGODB_URI;
 
 // mongoose
-//   .connect(MONGODB_URI)
+//   .connect(MONGODB_URI!)
 //   .then(() => console.log('Connected to MongoDB'))
 //   .catch((error) => console.error('MongoDB connection error:', error));
 
@@ -92,7 +95,7 @@
 //   });
 // });
 
-// const PORT = 5000;
+// const PORT = process.env.PORT || 5000;
 // server.listen(PORT, () => {
 //   console.log(`Server running on port http://localhost:${PORT}`);
 // });
@@ -104,52 +107,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import express, { Request, Response, NextFunction } from 'express';
 import http from 'http';
-import { Server as SocketServer } from 'socket.io';
+import { Server as SocketServer, Socket } from 'socket.io';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -181,8 +141,12 @@ app.use(express.json());
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
+if (!MONGODB_URI) {
+  throw new Error('MONGODB_URI is not defined in the environment variables');
+}
+
 mongoose
-  .connect(MONGODB_URI!)
+  .connect(MONGODB_URI)
   .then(() => console.log('Connected to MongoDB'))
   .catch((error) => console.error('MongoDB connection error:', error));
 
@@ -220,7 +184,7 @@ app.post('/api/chat', async (req: Request, res: Response) => {
 
 app.use(errorHandler);
 
-io.on('connection', (socket) => {
+io.on('connection', (socket: Socket) => {
   console.log('A user connected');
   socket.on('disconnect', () => {
     console.log('User disconnected');
@@ -248,10 +212,4 @@ const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server running on port http://localhost:${PORT}`);
 });
-
-
-
-
-
-
 
