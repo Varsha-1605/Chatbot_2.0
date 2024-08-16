@@ -1,5 +1,3 @@
 # Ignore environment files
 .env
 
-# Ignore build and distribution directories
-dist/
