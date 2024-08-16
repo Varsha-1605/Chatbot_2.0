@@ -14,8 +14,11 @@
     "typeRoots": ["./node_modules/@types", "./src"],
     "sourceMap": true,
     "declaration": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "src",
+    "paths": {
+      "*": ["*", "controllers/*", "models/*", "routes/*", "services/*", "utils/*"]
   },
-  "include": ["src/**/*"],
+ "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "dist"]
 }
