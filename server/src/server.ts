@@ -107,7 +107,8 @@
 
 import express, { Request, Response, NextFunction } from 'express';
 import http from 'http';
-const { Server: SocketServer } = require('socket.io');
+import express from 'express';
+import { Server as SocketServer } from 'socket.io';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import helmet from 'helmet';
