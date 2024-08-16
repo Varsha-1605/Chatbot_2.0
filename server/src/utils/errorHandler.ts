@@ -18,4 +18,4 @@ const errorHandler = (err: Error, req: Request, res: Response, next: NextFunctio
   res.status(500).json({ message: 'Something went wrong!' });
 };
 
-export = errorHandler;
+export default errorHandler;
