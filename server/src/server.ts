@@ -107,8 +107,7 @@
 
 import express, { Request, Response, NextFunction } from 'express';
 import http from 'http';
-import express from 'express';
-import { Server as SocketServer } from 'socket.io';
+import { Server as SocketServer, Socket } from 'socket.io';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -118,10 +117,7 @@ import dotenv from 'dotenv';
 import chatRoutes from './routes/chatRoutes';
 import errorHandler from './utils/errorHandler';
 
-const morgan = (await import('morgan')).default;
-
 dotenv.config();
-
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
