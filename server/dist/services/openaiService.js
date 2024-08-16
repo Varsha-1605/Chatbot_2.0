@@ -1,0 +1,24 @@
+"use strict";
+// // // import express from 'express';
+// // // import { sendMessage } from '../controllers/chatController';
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+// // // const router = express.Router();
+// // // router.post('/', sendMessage);
+// // // export default router;
+// // import express from 'express';
+// // import { sendMessage } from '../controllers/chatController';
+// // const router = express.Router();
+// // router.post('/', sendMessage);
+// // export default router;
+// import express from 'express';
+// import { sendMessage } from '../controllers/chatController';
+// const router = express.Router();
+// router.post('/', sendMessage);
+// export default router;
+const express_1 = __importDefault(require("express"));
+const chatController_1 = require("../controllers/chatController");
+const router = express_1.default.Router();
+router.post('/', chatController_1.sendMessage);
+module.exports = router;
