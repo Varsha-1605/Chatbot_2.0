@@ -105,11 +105,9 @@
 
 
 
-
-
 import express, { Request, Response, NextFunction } from 'express';
 import http from 'http';
-import { Server as SocketServer } from 'socket.io';
+import { Server as SocketServer, Socket } from 'socket.io';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -140,7 +138,6 @@ app.use(morgan('combined'));
 app.use(express.json());
 
 const MONGODB_URI = process.env.MONGODB_URI;
-
 if (!MONGODB_URI) {
   throw new Error('MONGODB_URI is not defined in the environment variables');
 }
@@ -186,9 +183,11 @@ app.use(errorHandler);
 
 io.on('connection', (socket: Socket) => {
   console.log('A user connected');
+
   socket.on('disconnect', () => {
     console.log('User disconnected');
   });
+
   socket.on('chat message', async (msg: string) => {
     try {
       const response = await openai.chat.completions.create({
@@ -209,7 +208,7 @@ io.on('connection', (socket: Socket) => {
 });
 
 const PORT = process.env.PORT || 5000;
+
 server.listen(PORT, () => {
   console.log(`Server running on port http://localhost:${PORT}`);
 });
-
