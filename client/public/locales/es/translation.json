@@ -1,0 +1,21 @@
+{
+    "appTitle": "Chatbot de IA",
+    "inputPlaceholder": "Escribe tu mensaje...",
+    "send": "Enviar",
+    "settings": "Configuración",
+    "language": "Idioma",
+    "theme": "Tema",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "system": "Sistema",
+    "copyToClipboard": "Copiar al portapapeles",
+    "copied": "¡Copiado!",
+    "errorOccurred": "Ocurrió un error",
+    "tryAgain": "Intentar de nuevo",
+    "speechRecognitionNotSupported": "El reconocimiento de voz no es compatible con este navegador.",
+    "listeningForSpeech": "Escuchando...",
+    "stopListening": "Dejar de escuchar",
+    "startListening": "Comenzar a escuchar",
+    "fontSize": "Tamaño de fuente",
+    "clearChat": "Borrar chat"
+  }
