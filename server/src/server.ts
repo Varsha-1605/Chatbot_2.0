@@ -118,7 +118,10 @@ import dotenv from 'dotenv';
 import chatRoutes from './routes/chatRoutes';
 import errorHandler from './utils/errorHandler';
 
+const morgan = (await import('morgan')).default;
+
 dotenv.config();
+
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
